@@ -139,6 +139,8 @@
                     app:layout_constraintTop_toTopOf="@+id/categoryrecyclerView" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="8dp"
                     android:id="@+id/categoryrecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
