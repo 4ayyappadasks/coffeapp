@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.coffeapp.Adaptor.CategoryAdaptor
+import com.example.coffeapp.Adaptor.PopularAdaptor
 import com.example.coffeapp.Viewmodel.MainViewModel
 import com.example.coffeapp.databinding.ActivityMainBinding
 
@@ -23,6 +25,18 @@ class MainActivity : AppCompatActivity() {
 
         initbanner()
         initcategory()
+        initpopular()
+    }
+
+    private fun initpopular() {
+        binding.progressBar3.visibility = View.VISIBLE
+        viewModel.loadPopualr().observeForever {
+            binding.popularcofferecyclerView.layoutManager =
+                GridLayoutManager(this, 2)
+            binding.popularcofferecyclerView.adapter = PopularAdaptor(it)
+            binding.progressBar3.visibility = View.GONE
+        }
+        viewModel.loadPopualr()
     }
 
     private fun initcategory() {
