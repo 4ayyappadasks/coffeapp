@@ -1,11 +1,14 @@
 package com.example.coffeapp.Adaptor
 
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.coffeapp.Activity.ItemListActivity
 import com.example.coffeapp.Domain.CategoryModel
 import com.example.coffeapp.R
 import com.example.coffeapp.databinding.ViewholderCategoryBinding
@@ -38,8 +41,14 @@ class CategoryAdaptor(val items:MutableList<CategoryModel>):
             notifyItemChanged(SelectePosition)
 
             Handler(Looper.getMainLooper()).postDelayed({
-                notifyItemChanged(LastSelectePosition)
-                notifyItemChanged(SelectePosition)
+                val intent = Intent(context, ItemListActivity::class.java).apply {
+                    putExtra("id", items.id.toString())
+                    putExtra("title", items.title)
+
+                    notifyItemChanged(LastSelectePosition)
+                    notifyItemChanged(SelectePosition)
+                }
+                ContextCompat.startActivity(context,intent,null)
             },500)
         }
         if(SelectePosition==position)

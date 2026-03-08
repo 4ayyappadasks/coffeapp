@@ -3,11 +3,11 @@ package com.example.coffeapp.Domain
 import java.io.Serializable
 
 data class ItemsModel(
-    val title: String = "",
-    val description: String = "",
-    val picUrl: ArrayList<String> = ArrayList(),
-    val price: Double = 0.0,
-    val rate: Double = 0.0,
-    val numberincart: Int = 0,
-    val extra: String = ""
+    var title: String = "",
+    var description: String = "",
+    var picUrl: ArrayList<String> = ArrayList(),
+    var price: Double = 0.0,
+    var rateing: Double = 0.0,
+    var numberIncart: Int = 0,
+    var extra: String = ""
 ) : Serializable
