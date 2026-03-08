@@ -5,12 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.coffeapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
-
+    compileSdk = 36
     defaultConfig {
         applicationId = "com.example.coffeapp"
         minSdk = 24

@@ -25,6 +25,7 @@ class MainRepository {
         ref.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                    android.util.Log.d("MainRepository", "loadBanner success: ${snapshot.value}")
                 val list = mutableListOf<BannerModel>()
 
                 for (childSnapshot in snapshot.children) {
@@ -36,6 +37,7 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                    android.util.Log.e("MainRepository", "loadBanner error: ${error.message}")
                 // You can log error here instead of TODO
             }
         })
@@ -52,6 +54,7 @@ class MainRepository {
         ref.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                    android.util.Log.d("MainRepository", "loadCategory success: ${snapshot.value}")
                 val list = mutableListOf<CategoryModel>()
 
                 for (childSnapshot in snapshot.children) {
@@ -63,6 +66,8 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                    android.util.Log.e("MainRepository", "loadCategory error: ${error.message}")
+
                 // You can log error here instead of TODO
             }
         })
@@ -79,6 +84,8 @@ class MainRepository {
         ref.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                    android.util.Log.d("MainRepository", "loadPopular success: ${snapshot.value}")
+
                 val list = mutableListOf<ItemsModel>()
 
                 for (childSnapshot in snapshot.children) {
@@ -90,6 +97,9 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
+
+                    android.util.Log.e("MainRepository", "loadPopular error: ${error.message}")
+
                 // You can log error here instead of TODO
             }
         })
@@ -103,6 +113,8 @@ class MainRepository {
         val query: Query = ref.orderByChild("categoryId").equalTo(Categoryid)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                    android.util.Log.d("MainRepository", "loadItemCategory success: ${snapshot.value}")
                 val list = mutableListOf<ItemsModel>()
                 for (childSnapshot in snapshot.children) {
                     val item = childSnapshot.getValue(ItemsModel::class.java)
@@ -112,6 +124,8 @@ class MainRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
+
+                    android.util.Log.e("MainRepository", "loadItemCategory error: ${error.message}")
 
             }
 
