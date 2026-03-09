@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         initbanner()
@@ -53,11 +52,11 @@ class MainActivity : AppCompatActivity() {
     private fun initbanner() {
         binding.progressBar.visibility = View.VISIBLE
 
-        viewModel.loadBanner().observe(this) { list ->
+        viewModel.loadBanner().observe(this) {
 
-            if (!list.isNullOrEmpty()) {
+            if (!it.isNullOrEmpty()) {
                 Glide.with(this)
-                    .load(list[0].url)
+                    .load(it[0].url)
                     .into(binding.banner)
             }
 
